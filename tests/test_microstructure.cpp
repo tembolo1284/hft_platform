@@ -95,15 +95,37 @@ TEST_F(MicrostructureTest, VWAPCalculation) {
 }
 
 TEST_F(MicrostructureTest, JumpDetection) {
+    // Create a scenario that triggers jump detection:
+    // 1. Extreme imbalance (>0.7)
+    // 2. High net pressure (>0.6) 
+    // 3. Thin book (<3 levels on one side)
+    
+    // Heavy bid side with multiple levels for pressure calculation
     book->add_order(std::make_shared<orderbook::Order>(
         1, "TEST", core::Side::BUY, core::OrderType::LIMIT,
-        core::double_to_price(100.0), 1000
+        core::double_to_price(100.0), 2000
     ));
     
     book->add_order(std::make_shared<orderbook::Order>(
-        2, "TEST", core::Side::SELL, core::OrderType::LIMIT,
-        core::double_to_price(101.0), 10
+        2, "TEST", core::Side::BUY, core::OrderType::LIMIT,
+        core::double_to_price(99.90), 1500
     ));
+    
+    book->add_order(std::make_shared<orderbook::Order>(
+        3, "TEST", core::Side::BUY, core::OrderType::LIMIT,
+        core::double_to_price(99.80), 1000
+    ));
+    
+    // Very thin ask side (only 1 level) with minimal volume
+    book->add_order(std::make_shared<orderbook::Order>(
+        100, "TEST", core::Side::SELL, core::OrderType::LIMIT,
+        core::double_to_price(100.10), 50
+    ));
+    
+    // Now we have:
+    // - Imbalance: (4500-50)/(4550) = 0.978 > 0.7 ✓
+    // - Thin book: 1 ask level < 3 ✓
+    // - Net pressure: Multiple weighted bid levels > 0.6 ✓
     
     bool jump_detected = micro->detect_imminent_jump(*book);
     
