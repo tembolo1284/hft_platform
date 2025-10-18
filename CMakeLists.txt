@@ -4,6 +4,21 @@ project(hft-platform)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Help clang find libstdc++ headers and libraries on Ubuntu/Debian systems
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    # Add GCC include paths for standard library headers
+    include_directories(SYSTEM /usr/include/c++/11)
+    include_directories(SYSTEM /usr/include/x86_64-linux-gnu/c++/11)
+    
+    # Add GCC library paths
+    link_directories(/usr/lib/gcc/x86_64-linux-gnu/11)
+    link_directories(/usr/lib/x86_64-linux-gnu)
+    
+    # Explicitly link libstdc++
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L/usr/lib/gcc/x86_64-linux-gnu/11")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -L/usr/lib/gcc/x86_64-linux-gnu/11")
+endif()
+
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fsanitize=address -fsanitize=undefined")
     set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address -fsanitize=undefined")
