@@ -184,5 +184,18 @@ double MicrostructureSignals::calculate_weighted_volume(
 double MicrostructureSignals::calculate_level_weight(core::Price level_price, 
                                                      core::Price mid_price,
                                                      bool is_bid_side) {
+    (void) is_bid_side;
     double distance = std::abs(static_cast<double>(level_price - mid_price));
-    double mid_price_double = core::price_to_double(mid_pr
+    double mid_price_double = core::price_to_double(mid_price);
+    
+    if (mid_price_double == 0.0) return 1.0;
+    
+    double normalized_distance = distance / mid_price_double;
+    
+    double weight = std::exp(-normalized_distance / pressure_weight_decay_);
+    
+    return weight;
+}
+
+} // namespace signals
+} // namespace hft

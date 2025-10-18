@@ -1,0 +1,92 @@
+[
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_core.dir/src/core/types.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/core/types.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/core/types.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_core.dir/src/core/timestamp.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/core/timestamp.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/core/timestamp.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_orderbook.dir/src/orderbook/order.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/orderbook/order.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/orderbook/order.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_orderbook.dir/src/orderbook/order_book.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/orderbook/order_book.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/orderbook/order_book.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_signals.dir/src/signals/microstructure_signals.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/signals/microstructure_signals.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/signals/microstructure_signals.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_risk.dir/src/risk/regulatory_limits.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/risk/regulatory_limits.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/risk/regulatory_limits.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_risk.dir/src/risk/risk_manager.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/risk/risk_manager.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/risk/risk_manager.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_market_data.dir/src/market_data/market_data.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/market_data/market_data.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/market_data/market_data.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/hft_server.dir/src/server/trading_server.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/src/server/trading_server.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/src/server/trading_server.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -DGTEST_HAS_PTHREAD=1 -std=gnu++20 -o CMakeFiles/run_tests.dir/tests/test_main.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_main.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_main.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -DGTEST_HAS_PTHREAD=1 -std=gnu++20 -o CMakeFiles/run_tests.dir/tests/test_orderbook.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_orderbook.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_orderbook.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -DGTEST_HAS_PTHREAD=1 -std=gnu++20 -o CMakeFiles/run_tests.dir/tests/test_microstructure.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_microstructure.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_microstructure.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -DGTEST_HAS_PTHREAD=1 -std=gnu++20 -o CMakeFiles/run_tests.dir/tests/test_regulatory_limits.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_regulatory_limits.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_regulatory_limits.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -DGTEST_HAS_PTHREAD=1 -std=gnu++20 -o CMakeFiles/run_tests.dir/tests/test_cme_scenarios.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_cme_scenarios.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_cme_scenarios.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -DGTEST_HAS_PTHREAD=1 -std=gnu++20 -o CMakeFiles/run_tests.dir/tests/test_nasdaq_scenarios.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_nasdaq_scenarios.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/tests/test_nasdaq_scenarios.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/demo_microstructure.dir/examples/demo_microstructure.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/examples/demo_microstructure.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/examples/demo_microstructure.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/demo_regulatory.dir/examples/demo_regulatory.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/examples/demo_regulatory.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/examples/demo_regulatory.cpp"
+},
+{
+  "directory": "/home/paullopez/Desktop/cpp-workspace/hft_platform/build",
+  "command": "/usr/bin/g++ -I/home/paullopez/Desktop/cpp-workspace/hft_platform/src  -O3 -march=native -Wall -Wextra -Werror -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/demo_full_system.dir/examples/demo_full_system.cpp.o -c /home/paullopez/Desktop/cpp-workspace/hft_platform/examples/demo_full_system.cpp",
+  "file": "/home/paullopez/Desktop/cpp-workspace/hft_platform/examples/demo_full_system.cpp"
+}
+]

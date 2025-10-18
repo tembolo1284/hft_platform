@@ -42,6 +42,7 @@ std::string TimestampUtil::to_string(Timestamp ts) {
 }
 
 Timestamp TimestampUtil::from_string(const std::string& str) {
+    (void) str;
     return now();
 }
 

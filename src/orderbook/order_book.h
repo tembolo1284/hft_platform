@@ -16,7 +16,8 @@ struct PriceLevel {
     core::Volume total_volume;
     std::vector<OrderPtr> orders;
     
-    PriceLevel(core::Price p) : price(p), total_volume(0) {}
+    PriceLevel() : price(0), total_volume(0) { }
+    PriceLevel(core::Price p) : price(p), total_volume(0) { }
 };
 
 struct Trade {

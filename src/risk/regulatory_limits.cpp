@@ -17,6 +17,7 @@ ExchangeLimits CMELimits::get_futures_limits(const std::string& contract) {
 }
 
 ExchangeLimits CMELimits::get_options_limits(const std::string& contract) {
+    (void) contract;
     ExchangeLimits limits;
     limits.exchange = core::Exchange::CME;
     limits.asset_class = core::AssetClass::OPTIONS;
@@ -111,10 +112,12 @@ int64_t CMELimits::get_accountability_level(const std::string& contract) {
 }
 
 ExchangeLimits NASDAQLimits::get_equity_limits(const std::string& symbol) {
+    (void) symbol;
     return get_large_cap_limits();
 }
 
 ExchangeLimits NASDAQLimits::get_etf_limits(const std::string& symbol) {
+    (void) symbol;
     ExchangeLimits limits = get_large_cap_limits();
     
     limits.max_position = 2000000;
@@ -174,6 +177,7 @@ ExchangeLimits NASDAQLimits::get_small_cap_limits() {
 }
 
 double NASDAQLimits::get_luld_threshold(const std::string& symbol, double reference_price) {
+    (void) symbol;
     if (reference_price >= 3.0) {
         return reference_price * 0.05;
     } else if (reference_price >= 0.75) {

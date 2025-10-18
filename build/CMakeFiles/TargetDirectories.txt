@@ -1,0 +1,13 @@
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/hft_core.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/hft_orderbook.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/hft_signals.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/hft_risk.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/hft_market_data.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/hft_server.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/run_tests.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/demo_microstructure.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/demo_regulatory.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/demo_full_system.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/test.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/edit_cache.dir
+/home/paullopez/Desktop/cpp-workspace/hft_platform/build/CMakeFiles/rebuild_cache.dir

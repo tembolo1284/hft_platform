@@ -161,101 +161,163 @@ void OrderBook::match_order(OrderPtr order) {
 }
 
 void OrderBook::match_market_order(OrderPtr order) {
-    auto& opposite_book = (order->get_side() == core::Side::BUY) ? asks_ : bids_;
-    
-    for (auto& [price, level] : opposite_book) {
-        if (!order->is_fillable()) break;
-        
-        for (auto it = level.orders.begin(); it != level.orders.end(); ) {
+    if (order->get_side() == core::Side::BUY) {
+        // Market buy order - match against asks
+        for (auto& [price, level] : asks_) {
             if (!order->is_fillable()) break;
             
-            auto opposite_order = *it;
-            auto fill_quantity = std::min(order->get_remaining_quantity(), 
-                                         opposite_order->get_remaining_quantity());
+            for (auto it = level.orders.begin(); it != level.orders.end(); ) {
+                if (!order->is_fillable()) break;
+                
+                auto opposite_order = *it;
+                auto fill_quantity = std::min(order->get_remaining_quantity(), 
+                                             opposite_order->get_remaining_quantity());
+                
+                execute_trade(order, opposite_order, opposite_order->get_price(), fill_quantity);
+                
+                if (!opposite_order->is_fillable()) {
+                    it = level.orders.erase(it);
+                    level.total_volume -= opposite_order->get_quantity();
+                } else {
+                    ++it;
+                }
+            }
+        }
+    } else {
+        // Market sell order - match against bids
+        for (auto& [price, level] : bids_) {
+            if (!order->is_fillable()) break;
             
-            execute_trade(
-                order->get_side() == core::Side::BUY ? order : opposite_order,
-                order->get_side() == core::Side::SELL ? order : opposite_order,
-                opposite_order->get_price(),
-                fill_quantity
-            );
-            
-            if (!opposite_order->is_fillable()) {
-                it = level.orders.erase(it);
-                level.total_volume -= opposite_order->get_quantity();
-            } else {
-                ++it;
+            for (auto it = level.orders.begin(); it != level.orders.end(); ) {
+                if (!order->is_fillable()) break;
+                
+                auto opposite_order = *it;
+                auto fill_quantity = std::min(order->get_remaining_quantity(), 
+                                             opposite_order->get_remaining_quantity());
+                
+                execute_trade(opposite_order, order, opposite_order->get_price(), fill_quantity);
+                
+                if (!opposite_order->is_fillable()) {
+                    it = level.orders.erase(it);
+                    level.total_volume -= opposite_order->get_quantity();
+                } else {
+                    ++it;
+                }
             }
         }
     }
 }
 
 void OrderBook::match_limit_order(OrderPtr order) {
-    auto& opposite_book = (order->get_side() == core::Side::BUY) ? asks_ : bids_;
-    
-    for (auto& [price, level] : opposite_book) {
-        if (!order->is_fillable()) break;
-        
-        bool price_acceptable = (order->get_side() == core::Side::BUY) ? 
-                               (price <= order->get_price()) : 
-                               (price >= order->get_price());
-        
-        if (!price_acceptable) break;
-        
-        for (auto it = level.orders.begin(); it != level.orders.end(); ) {
+    if (order->get_side() == core::Side::BUY) {
+        // Limit buy order - match against asks
+        for (auto& [price, level] : asks_) {
             if (!order->is_fillable()) break;
             
-            auto opposite_order = *it;
-            auto fill_quantity = std::min(order->get_remaining_quantity(), 
-                                         opposite_order->get_remaining_quantity());
+            // Check if price is acceptable
+            if (price > order->get_price()) break;
             
-            execute_trade(
-                order->get_side() == core::Side::BUY ? order : opposite_order,
-                order->get_side() == core::Side::SELL ? order : opposite_order,
-                opposite_order->get_price(),
-                fill_quantity
-            );
+            for (auto it = level.orders.begin(); it != level.orders.end(); ) {
+                if (!order->is_fillable()) break;
+                
+                auto opposite_order = *it;
+                auto fill_quantity = std::min(order->get_remaining_quantity(), 
+                                             opposite_order->get_remaining_quantity());
+                
+                execute_trade(order, opposite_order, opposite_order->get_price(), fill_quantity);
+                
+                if (!opposite_order->is_fillable()) {
+                    it = level.orders.erase(it);
+                    level.total_volume -= opposite_order->get_quantity();
+                } else {
+                    ++it;
+                }
+            }
+        }
+    } else {
+        // Limit sell order - match against bids
+        for (auto& [price, level] : bids_) {
+            if (!order->is_fillable()) break;
             
-            if (!opposite_order->is_fillable()) {
-                it = level.orders.erase(it);
-                level.total_volume -= opposite_order->get_quantity();
-            } else {
-                ++it;
+            // Check if price is acceptable
+            if (price < order->get_price()) break;
+            
+            for (auto it = level.orders.begin(); it != level.orders.end(); ) {
+                if (!order->is_fillable()) break;
+                
+                auto opposite_order = *it;
+                auto fill_quantity = std::min(order->get_remaining_quantity(), 
+                                             opposite_order->get_remaining_quantity());
+                
+                execute_trade(opposite_order, order, opposite_order->get_price(), fill_quantity);
+                
+                if (!opposite_order->is_fillable()) {
+                    it = level.orders.erase(it);
+                    level.total_volume -= opposite_order->get_quantity();
+                } else {
+                    ++it;
+                }
             }
         }
     }
 }
 
 void OrderBook::add_to_book(OrderPtr order) {
-    auto& book = (order->get_side() == core::Side::BUY) ? bids_ : asks_;
     auto price = order->get_price();
     
-    auto it = book.find(price);
-    if (it == book.end()) {
-        book[price] = PriceLevel(price);
-        it = book.find(price);
+    if (order->get_side() == core::Side::BUY) {
+        auto it = bids_.find(price);
+        if (it == bids_.end()) {
+            bids_[price] = PriceLevel(price);
+            it = bids_.find(price);
+        }
+        
+        it->second.orders.push_back(order);
+        it->second.total_volume += order->get_remaining_quantity();
+    } else {
+        auto it = asks_.find(price);
+        if (it == asks_.end()) {
+            asks_[price] = PriceLevel(price);
+            it = asks_.find(price);
+        }
+        
+        it->second.orders.push_back(order);
+        it->second.total_volume += order->get_remaining_quantity();
     }
-    
-    it->second.orders.push_back(order);
-    it->second.total_volume += order->get_remaining_quantity();
 }
 
 void OrderBook::remove_from_book(OrderPtr order) {
-    auto& book = (order->get_side() == core::Side::BUY) ? bids_ : asks_;
     auto price = order->get_price();
     
-    auto it = book.find(price);
-    if (it != book.end()) {
-        auto& orders = it->second.orders;
-        orders.erase(
-            std::remove(orders.begin(), orders.end(), order),
-            orders.end()
-        );
-        
-        it->second.total_volume -= order->get_remaining_quantity();
-        
-        if (orders.empty()) {
-            book.erase(it);
+    if (order->get_side() == core::Side::BUY) {
+        auto it = bids_.find(price);
+        if (it != bids_.end()) {
+            auto& orders = it->second.orders;
+            orders.erase(
+                std::remove(orders.begin(), orders.end(), order),
+                orders.end()
+            );
+            
+            it->second.total_volume -= order->get_remaining_quantity();
+            
+            if (orders.empty()) {
+                bids_.erase(it);
+            }
+        }
+    } else {
+        auto it = asks_.find(price);
+        if (it != asks_.end()) {
+            auto& orders = it->second.orders;
+            orders.erase(
+                std::remove(orders.begin(), orders.end(), order),
+                orders.end()
+            );
+            
+            it->second.total_volume -= order->get_remaining_quantity();
+            
+            if (orders.empty()) {
+                asks_.erase(it);
+            }
         }
     }
 }
